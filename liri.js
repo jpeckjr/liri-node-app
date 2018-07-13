@@ -121,13 +121,6 @@ function getMovie(movieName){
   
   	if (!error && response.statusCode === 200) {
 
-	    //console.log(JSON.parse(body));
-	    
-	    //Get the Movie ID
-	    var movieID =  JSON.parse(body).results[0].id;
-	    //console.log(movieID);
-
-	    //Create new query using the movie ID
 	    var queryURL = "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=trilogy";
 
 	    request(queryURL, function(error, response, body) {
@@ -179,10 +172,6 @@ function doWhatitSays(){
 		processCommands(dataArr[0], dataArr[1]);
 	});
 }
-
-
-
-//-------------------------MAIN PROCESS-------------------------------------------
 
 processCommands(inputCommand, commandParam);
 
