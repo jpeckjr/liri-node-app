@@ -2,29 +2,26 @@
 
 //  Dontenv
  require("dotenv").config();
+ var keys = require("./key.js")
+ var request = require('request');
+ var fs = require('fs');
 
  // Spotify
- var spotify = new Spotify(keys.spotify);
  var Spotify = require('node-spotify-api');
+ var spotify = new Spotify(keys.spotify);
  var defaultSong = "The Sign"
 
  // Twitter
- var client = new Twitter(keys.twitter);
  var Twitter = require('twitter');
+ var client = new Twitter(keys.twitter);
  var tweetsArray = [];
-    var client = new Twitter({
-    consumer_key: process.env.TWITTER_CONSUMER_KEY,
-    consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
-    access_token_key: process.env.TWITTER_ACCESS_TOKEN_KEY,
-    access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
-  });
+
  
  // Other
- var request = require('request');
- var fs = require('fs');
+
  var inputCommand = process.argv[2]
  var commandParam = process.argv[3]
- var keys = require("./key.js")
+
  var defaultMovie = "Mr. Nobody"
 
 
@@ -62,7 +59,7 @@ function processCommands(command, commandParam) {
 
 function getmyTweets() {
  
-    var params = {screen_name: 'JohnnyCoder', count: 20, exclude_replies:true, trim_user:true};
+    var params = {screen_name: 'coder_johnny', count: 20, exclude_replies:true, trim_user:true};
     client.get('statuses/user_timeline', params, function(error, tweets, response) {
             if (!error) {
                 //console.log(tweets);
